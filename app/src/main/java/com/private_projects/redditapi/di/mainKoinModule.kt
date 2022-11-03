@@ -1,8 +1,10 @@
 package com.private_projects.redditapi.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.private_projects.redditapi.data.local.LocalDataRepoImpl
 import com.private_projects.redditapi.data.local.LocalDatabaseHelperImpl
 import com.private_projects.redditapi.data.remote.RedditDataApiHelper
+import com.private_projects.redditapi.domain.local.LocalDataRepo
 import com.private_projects.redditapi.domain.local.LocalDatabaseBuilder
 import com.private_projects.redditapi.domain.local.LocalDatabaseHelper
 import com.private_projects.redditapi.domain.remote.RedditDataApi
@@ -41,10 +43,15 @@ val mainKoinModule = module {
         RedditDataApiHelper(get(named("reddit_data_api")))
     }
 
+    single<LocalDataRepo>(named("local_data_repo")) {
+        LocalDataRepoImpl(get(named("local_database_helper")))
+    }
+
     viewModel(named("main_view_model")) {
         MainViewModel(
             get(named("local_database_helper")),
-            get(named("reddit_data_api_helper"))
+            get(named("reddit_data_api_helper")),
+            get(named("local_data_repo"))
         )
     }
 }

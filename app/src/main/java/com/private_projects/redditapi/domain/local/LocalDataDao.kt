@@ -6,13 +6,13 @@ import androidx.room.Query
 import com.private_projects.redditapi.data.local.LocalDataEntity
 
 @Dao
-interface LocalDataDao {
-    @Query("SELECT * FROM local_data")
-    suspend fun getData(): List<LocalDataEntity>
+abstract class LocalDataDao {
+    @Query("SELECT * FROM local_data LIMIT :size")
+    abstract suspend fun getData(size: Int): List<LocalDataEntity>
 
     @Insert
-    suspend fun insert(data: LocalDataEntity)
+    abstract suspend fun insert(data: LocalDataEntity)
 
     @Insert
-    suspend fun insertAll(dataList: List<LocalDataEntity>)
+    abstract suspend fun insertAll(dataList: List<LocalDataEntity>)
 }
