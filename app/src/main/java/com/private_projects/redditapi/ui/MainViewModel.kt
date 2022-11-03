@@ -47,7 +47,7 @@ class MainViewModel(
         }
     }
 
-    private fun getLocalData(): LiveData<PagingData<LocalDataEntity>> {
+    fun getLocalData(): LiveData<PagingData<LocalDataEntity>> {
         _loading.postValue(false)
         return localDataRepo.getPosts().cachedIn(viewModelScope)
     }

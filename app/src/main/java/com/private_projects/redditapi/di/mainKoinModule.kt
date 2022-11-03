@@ -8,6 +8,7 @@ import com.private_projects.redditapi.domain.local.LocalDataRepo
 import com.private_projects.redditapi.domain.local.LocalDatabaseBuilder
 import com.private_projects.redditapi.domain.local.LocalDatabaseHelper
 import com.private_projects.redditapi.domain.remote.RedditDataApi
+import com.private_projects.redditapi.ui.MainPagerAdapter
 import com.private_projects.redditapi.ui.MainViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -53,5 +54,9 @@ val mainKoinModule = module {
             get(named("reddit_data_api_helper")),
             get(named("local_data_repo"))
         )
+    }
+
+    single(named("main_pager_adapter")) {
+        MainPagerAdapter()
     }
 }
