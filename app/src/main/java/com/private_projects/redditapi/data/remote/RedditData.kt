@@ -1,4 +1,4 @@
-package com.private_projects.redditapi.data
+package com.private_projects.redditapi.data.remote
 
 
 import com.google.gson.annotations.SerializedName
