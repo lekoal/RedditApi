@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RedditApi</string>
+    <string name="hot_posts_title">Hot</string>
 </resources>
