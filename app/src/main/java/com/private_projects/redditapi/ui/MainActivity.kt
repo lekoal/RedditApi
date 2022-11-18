@@ -11,7 +11,7 @@ import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() { //test
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel(named("main_view_model"))
     private val adapter: MainPagerAdapter by lazy {
